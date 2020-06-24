@@ -147,7 +147,9 @@ public class RNTrackPlayer: RCTEventEmitter {
         }
         
         setupInterruptionHandling();
-
+        let minBuffer: TimeInterval = config["minBuffer"] as? TimeInterval ?? 15
+              player.bufferDuration = minBuffer
+        
         // configure if player waits to play
         let autoWait: Bool = config["waitForBuffer"] as? Bool ?? false
         player.automaticallyWaitsToMinimizeStalling = autoWait
